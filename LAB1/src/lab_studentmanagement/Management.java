@@ -41,6 +41,7 @@ public class Management {
             }
             else {
                 System.out.println("Dupplicated");
+
             }
         }
     }
@@ -84,6 +85,7 @@ public class Management {
         for (Student student : ls) {
             if (id.equalsIgnoreCase(student.getId())) {
                 getListStudentById.add(student);
+
             }
         }
         return getListStudentById;
@@ -154,6 +156,7 @@ public class Management {
                 updateStudent(t, student);
             } else if (choice.equalsIgnoreCase("d")) {
                 deleteStudent(t, id);
+                return;
             }
         }
     }
