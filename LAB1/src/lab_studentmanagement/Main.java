@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author fptshop
  */
 public class Main {
+    //hehehe
     public static void main(String[] args) {
         ArrayList<Student> ls = new ArrayList<>();
         Management management = new Management();
