@@ -28,7 +28,7 @@ public class Validation {
                     return number;
                 }
             } catch (NumberFormatException numberFormatException) {
-
+                System.out.println("Please enter number format");
             }
         }
     }
