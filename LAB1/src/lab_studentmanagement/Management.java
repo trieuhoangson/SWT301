@@ -45,8 +45,8 @@ public class Management {
     }
     public ArrayList<Student> listFindByName(ArrayList<Student> t) {
         ArrayList<Student> list = new ArrayList<>();
-        //String name = validation.getString("Enter a name: ","[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+");
-        String name = validation.getString2("Enter character: ");
+        String name = validation.getString("Enter a name: ","[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+");
+        //String name = validation.getString2("Enter character: ");
 
         for (Student s : t) {
             if(s.getStudentName().toLowerCase().contains(name.toLowerCase())) {
@@ -58,21 +58,16 @@ public class Management {
     public void findAndSort(ArrayList<Student> t) {
         if(t.isEmpty()) {
             System.out.println("Empty list");
-            return;
         }
         else {
             ArrayList<Student> list = listFindByName(t);
             if(list.isEmpty()) {
                 System.out.println("No student has this name");
-                return;
             }
             else {
-                Collections.sort(list, new Comparator<Student>() {
-                    @Override
-                    public int compare(Student o1, Student o2) {
-                        return o1.getStudentName().compareToIgnoreCase(o2.getStudentName());
-                    }
-                });
+                Collections.sort(list, (o1, o2) -> o1.getStudentName().compareToIgnoreCase(o2.getStudentName()));
+
+
                 System.out.printf("%-15s%-15s%-15s\n", "Student name","Semester","Course name");
                 for (Student s : list) {
                     s.print();
@@ -145,7 +140,7 @@ public class Management {
         }
     }
     public void report(ArrayList<Student> t) {
-        int student;
+
         if(t.isEmpty()) {
             System.out.println("List is empty");
             return;
