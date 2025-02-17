@@ -19,13 +19,14 @@ public class Management {
         System.out.println("4.   Report");
         System.out.println("5.   Exit");
     }
+    String regex = "[A-Za-z0-9]+";
     public void create(ArrayList<Student> t) {
         if(t.size() > 10) {
             String choice = validation.getChoice("Do you want to continue(Y/N)?", "y", "n");
             if(choice.equalsIgnoreCase("n")) return;
         }
         while (true) {            
-            String id = validation.getString("ID: ","[A-Za-z0-9]+");
+            String id = validation.getString("ID: ",regex);
             String studentName = validation.getString("Student name: ","[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+");
             if(validation.checkIdExist(t, id, studentName)) {
                 System.out.println("exist this ID!");
@@ -45,8 +46,8 @@ public class Management {
     }
     public ArrayList<Student> listFindByName(ArrayList<Student> t) {
         ArrayList<Student> list = new ArrayList<>();
-        //String name = validation.getString("Enter a name: ","[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+");
-        String name = validation.getString2("Enter character: ");
+        String name = validation.getString("Enter a name: ","[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+");
+        //String name = validation.getString2("Enter character: ");
 
         for (Student s : t) {
             if(s.getStudentName().toLowerCase().contains(name.toLowerCase())) {
@@ -58,30 +59,27 @@ public class Management {
     public void findAndSort(ArrayList<Student> t) {
         if(t.isEmpty()) {
             System.out.println("Empty list");
-            return;
         }
         else {
             ArrayList<Student> list = listFindByName(t);
             if(list.isEmpty()) {
                 System.out.println("No student has this name");
-                return;
             }
             else {
-                Collections.sort(list, new Comparator<Student>() {
-                    @Override
-                    public int compare(Student o1, Student o2) {
-                        return o1.getStudentName().compareToIgnoreCase(o2.getStudentName());
-                    }
-                });
+                Collections.sort(list, (o1, o2) -> o1.getStudentName().compareToIgnoreCase(o2.getStudentName()));
+
+
                 System.out.printf("%-15s%-15s%-15s\n", "Student name","Semester","Course name");
                 for (Student s : list) {
                     s.print();
+                    return;
                 }
             }
         }
     }
 
     public ArrayList<Student> getListStudentById( Set<Student> ls, String id) {
+        String list;
         ArrayList<Student> getListStudentById = new ArrayList<>();
         for (Student student : ls) {
             if (id.equalsIgnoreCase(student.getId())) {
@@ -90,61 +88,78 @@ public class Management {
         }
         return getListStudentById;
     }
-    public void updateOrDelete(ArrayList<Student> t) {
-        String id = validation.getString("enter id:","[A-Za-z0-9]+");
+    private Student findStudentById(ArrayList<Student> t, String id) {
         for (Student s : t) {
-            if(s.getId().equalsIgnoreCase(id)) {
-                s.print();
-                String choice1 = validation.getChoice("Do you want to edit this data? (y/n)", "y", "n");
-                if(choice1.equalsIgnoreCase("y")) {
-                String choice = validation.getChoice("Do you want to update (U) or delete (D) student?","u","d");
-                if(choice.equalsIgnoreCase("u")) {
-                    String studentID = validation.getString1("Enter student ID: ","[A-Za-z0-9]+");
-                    String studentName = validation.getString1("Enter student name: ","[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+");
-                    String semester = validation.getString1("Enter semester: ","[A-Za-z]+\\s*[A-Za-z]+");
-                    String courseName = validation.getCourse1("Enter course name: ");
-                    if(!validation.checkChangeInformation(s, studentID, studentName, semester, courseName)) {
-                        System.out.println("Nothing change.");
-                    }
-                    else {
-                        if(!studentID.equals("")) {
-                            for (Student s1 : t) {
-                                if(s1.getId().equalsIgnoreCase(id)) {
-                                    s1.setId(studentID);
-                                }
-                            }
-                        }
-                        if(!studentName.equals("")) {
-                            s.setStudentName(studentName);
-                            for (Student s1 : t) {
-                                if(s1.getId().equalsIgnoreCase(s.getId())) {
-                                    s1.setStudentName(studentName);
-                                }
-                            }
-                        }
-                        if(!semester.equals("")) s.setSemester(semester);
-                        if(!courseName.equals(""))s.setCourseName(courseName);
-                        System.out.println("Update successfully");
-                    }
-                }
-                else {
-                    ArrayList<Student> listFindById = getListStudentById(t, id);
-                    for (Student student : listFindById) {
-                        t.remove(student);
-                        //break;
-                    }
-                    System.out.println("Delete successfully");
-                    break;
-                }
-                }
-                else {
-                    continue;
-                }
+            if (s.getId().equalsIgnoreCase(id)) {
+                return s;
+            }
+        }
+        return null;
+    }
+
+    private boolean shouldEditStudent() {
+        String choice = validation.getChoice("Do you want to edit this data? (y/n)", "y", "n");
+        return choice.equalsIgnoreCase("y");
+    }
+
+    private void updateStudent(ArrayList<Student> t, Student student) {
+        String studentID = validation.getString1("Enter student ID: ", regex);
+        String studentName = validation.getString1("Enter student name: ", "[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+");
+        String semester = validation.getString1("Enter semester: ", "[A-Za-z]+\\s*[A-Za-z]+");
+        String courseName = validation.getCourse1("Enter course name: ");
+
+        if (!validation.checkChangeInformation(student, studentID, studentName, semester, courseName)) {
+            System.out.println("Nothing changed.");
+            return;
+        }
+
+        updateStudentDetails(t, student, studentID, studentName, semester, courseName);
+        System.out.println("Updated successfully");
+    }
+
+    private void updateStudentDetails(ArrayList<Student> t, Student student, String studentID, String studentName, String semester, String courseName) {
+        if (!studentID.isEmpty()) updateStudentId(t, student, studentID);
+        if (!studentName.isEmpty()) student.setStudentName(studentName);
+        if (!semester.isEmpty()) student.setSemester(semester);
+        if (!courseName.isEmpty()) student.setCourseName(courseName);
+    }
+
+    private void updateStudentId(ArrayList<Student> t, Student student, String studentID) {
+        for (Student s : t) {
+            if (s.getId().equalsIgnoreCase(student.getId())) {
+                s.setId(studentID);
             }
         }
     }
+
+    private void deleteStudent(ArrayList<Student> t, String id) {
+        ArrayList<Student> studentsToDelete = getListStudentById((Set<Student>) t, id);
+        t.removeAll(studentsToDelete);
+        System.out.println("Deleted successfully");
+    }
+
+    public void updateOrDelete(ArrayList<Student> t) {
+        String id = validation.getString("Enter ID: ", regex);
+        Student student = findStudentById(t, id);
+
+        if (student == null) {
+            System.out.println("Student not found.");
+            return;
+        }
+
+        student.print();
+        if (shouldEditStudent()) {
+            String choice = validation.getChoice("Do you want to update (U) or delete (D) student?", "u", "d");
+            if (choice.equalsIgnoreCase("u")) {
+                updateStudent(t, student);
+            } else if (choice.equalsIgnoreCase("d")) {
+                deleteStudent(t, id);
+            }
+        }
+    }
+
     public void report(ArrayList<Student> t) {
-        int student;
+
         if(t.isEmpty()) {
             System.out.println("List is empty");
             return;
