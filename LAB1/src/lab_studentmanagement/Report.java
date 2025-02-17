@@ -11,7 +11,7 @@ package lab_studentmanagement;
 public class Report {
     private String studentName;
     private String courseName;
-    private int _totalCourse;
+    private int totalCourse;
 
     public Report(String studentName, String courseName, int _totalCourse) {
         this.studentName = studentName;

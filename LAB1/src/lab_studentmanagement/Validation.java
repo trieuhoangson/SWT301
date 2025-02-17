@@ -28,7 +28,7 @@ public class Validation {
                     return number;
                 }
             } catch (NumberFormatException numberFormatException) {
-
+                System.out.println("Please enter number format");
             }
         }
     }
@@ -47,8 +47,7 @@ public class Validation {
     }
     public String getString1(String mess, String regex) {
         String input;
-        String output;
-        while (true) {            
+        while (true) {
             System.out.println(mess);
             input = sc.nextLine().trim();
             if(input.matches(regex) || input.equalsIgnoreCase("")) {
@@ -138,9 +137,10 @@ public class Validation {
         return false;
     }
     public boolean checkChangeInformation(Student s, String id, String studentName, String semester, String courseName) {
-        if(s.getId().equalsIgnoreCase(id) && s.getStudentName().equalsIgnoreCase(studentName) && s.getSemester().equalsIgnoreCase(semester) && s.getCourseName().equalsIgnoreCase(courseName)) {
-            return false;
-        }
-        return true;
+        return !(s.getId().equalsIgnoreCase(id)
+                && s.getStudentName().equalsIgnoreCase(studentName)
+                && s.getSemester().equalsIgnoreCase(semester)
+                && s.getCourseName().equalsIgnoreCase(courseName));
     }
+
 }

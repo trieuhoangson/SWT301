@@ -162,7 +162,6 @@ public class Management {
     }
 
     public void report(ArrayList<Student> t) {
-
         if(t.isEmpty()) {
             System.out.println("List is empty");
             return;
