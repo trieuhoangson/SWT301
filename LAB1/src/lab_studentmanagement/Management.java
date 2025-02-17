@@ -133,7 +133,7 @@ public class Management {
     }
 
     private void deleteStudent(ArrayList<Student> t, String id) {
-        ArrayList<Student> studentsToDelete = getListStudentById(t, id);
+        ArrayList<Student> studentsToDelete = getListStudentById((Set<Student>) t, id);
         t.removeAll(studentsToDelete);
         System.out.println("Deleted successfully");
     }
