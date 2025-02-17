@@ -14,6 +14,7 @@ public class Main {
     //hehehe
     public static void main(String[] args) {
         //kk
+        // tro huong beo
         ArrayList<Student> ls = new ArrayList<>();
         Management management = new Management();
         Validation validation = new Validation();
