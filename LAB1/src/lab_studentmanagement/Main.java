@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         //kk
+        // tro huong beo
         ArrayList<Student> ls = new ArrayList<>();
         Management management = new Management();
         Validation validation = new Validation();
