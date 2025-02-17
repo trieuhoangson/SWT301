@@ -11,6 +11,8 @@ import java.util.*;
  * @author fptshop
  */
 public class Management {
+    private static final String NAME_REGEX = "[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+";
+
     Validation validation = new Validation();
     public void printMenu() {
         System.out.println("1.   Create");
@@ -27,7 +29,7 @@ public class Management {
         }
         while (true) {            
             String id = validation.getString("ID: ",regex);
-            String studentName = validation.getString("Student name: ","[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+");
+            String studentName = validation.getString("Student name: ",NAME_REGEX);
             if(validation.checkIdExist(t, id, studentName)) {
                 System.out.println("exist this ID!");
                 continue;
@@ -47,7 +49,7 @@ public class Management {
     }
     public ArrayList<Student> listFindByName(ArrayList<Student> t) {
         ArrayList<Student> list = new ArrayList<>();
-        String name = validation.getString("Enter a name: ","[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+");
+        String name = validation.getString("Enter a name: ",NAME_REGEX);
         //String name = validation.getString2("Enter character: ");
 
         for (Student s : t) {
@@ -106,7 +108,7 @@ public class Management {
 
     private void updateStudent(ArrayList<Student> t, Student student) {
         String studentID = validation.getString1("Enter student ID: ", regex);
-        String studentName = validation.getString1("Enter student name: ", "[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+\\s*[A-Za-z]+");
+        String studentName = validation.getString1("Enter student name: ", NAME_REGEX);
         String semester = validation.getString1("Enter semester: ", "[A-Za-z]+\\s*[A-Za-z]+");
         String courseName = validation.getCourse1("Enter course name: ");
 
