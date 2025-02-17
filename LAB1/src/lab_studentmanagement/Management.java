@@ -91,6 +91,7 @@ public class Management {
         return getListStudentById;
     }
     public void updateOrDelete(ArrayList<Student> t) {
+        int idStudent;
         String id = validation.getString("enter id:","[A-Za-z0-9]+");
         for (Student s : t) {
             if(s.getId().equalsIgnoreCase(id)) {
