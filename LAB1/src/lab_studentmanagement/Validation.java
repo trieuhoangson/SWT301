@@ -28,7 +28,7 @@ public class Validation {
                     return number;
                 }
             } catch (NumberFormatException numberFormatException) {
-                System.out.println("Please enter number format");
+
             }
         }
     }
@@ -47,6 +47,7 @@ public class Validation {
     }
     public String getString1(String mess, String regex) {
         String input;
+        String output;
         while (true) {            
             System.out.println(mess);
             input = sc.nextLine().trim();
