@@ -11,16 +11,13 @@ import java.util.ArrayList;
  * @author fptshop
  */
 public class Main {
-    //hehehe
-    //hiep
+
     public static void main(String[] args) {
-        //kk
-        // tro huong beo
+
         ArrayList<Student> ls = new ArrayList<>();
         Management management = new Management();
         Validation validation = new Validation();
-        int number;
-        //ls.add(new Student("1", "Pham Ngoc Hoa", "Spring", "java"));
+        ls.add(new Student("1", "Pham Ngoc Hoa", "Spring", "java"));
         ls.add(new Student("2", "Do Quang Hiep", "Summer", ".net"));
         ls.add(new Student("3", "Nguyen Xuan Cuong", "Spring", "c/c++"));
         //loop until user want to exit program
@@ -41,7 +38,7 @@ public class Main {
                 case 4:
                     management.report(ls);
                     break;
-                case 5:
+                 default:
                     return;
             }
         }
