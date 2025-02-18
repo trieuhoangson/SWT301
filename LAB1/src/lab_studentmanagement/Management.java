@@ -170,7 +170,6 @@ public class Management {
         }
         ArrayList<Report> list = new ArrayList<>();
         for (int i = 0; i < t.size(); i++) {
-            //int total = 0;
             for (Student s : t) {
                 String id = s.getId();
                 String courseName = s.getCourseName();
