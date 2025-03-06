@@ -13,10 +13,10 @@ public class Report {
     private String courseName;
     private int totalCourse;
 
-    public Report(String studentName, String courseName, int _totalCourse) {
+    public Report(String studentName, String courseName, int totalCourse) {
         this.studentName = studentName;
         this.courseName = courseName;
-        this._totalCourse = _totalCourse;
+        this.totalCourse = totalCourse;
     }
 
     public String getStudentName() {
@@ -36,11 +36,11 @@ public class Report {
     }
 
     public int getTotalCourse() {
-        return _totalCourse;
+        return totalCourse;
     }
 
     public void setTotalCourse(int totalCourse) {
-        this._totalCourse = totalCourse;
+        this.totalCourse = totalCourse;
     }
     
 }

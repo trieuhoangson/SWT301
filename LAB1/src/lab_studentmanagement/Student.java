@@ -12,14 +12,14 @@ public class Student {
     private String id;
     private String studentName;
     private String semester;
-    private String _courseName;
+    private String courseName;
 
 
-    public Student(String id, String studentName, String semester, String _courseName) {
+    public Student(String id, String studentName, String semester, String courseName) {
         this.id = id;
         this.studentName = studentName;
         this.semester = semester;
-        this._courseName = _courseName;
+        this.courseName = courseName;
     }
 
     public String getId() {
@@ -47,13 +47,13 @@ public class Student {
     }
 
     public String getCourseName() {
-        return _courseName;
+        return courseName;
     }
 
     public void setCourseName(String courseName) {
-        this._courseName = courseName;
+        this.courseName = courseName;
     }
     public void print() {
-        System.out.printf("%-20s%-15s%-15s\n",studentName,semester,_courseName);
+        System.out.printf("%-20s%-15s%-15s\n",studentName,semester,courseName);
     }
 }
