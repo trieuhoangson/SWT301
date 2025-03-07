@@ -4,147 +4,54 @@
  */
 package model;
 
-import dal.DAO_Insurance;
-import java.util.Date;
-
 /**
  *
- * @author default
+ * @author jaxbo
  */
 public class Customer {
 
-    public String full_name, email, username, password, phone_number, address, card_type, status, gender, profile_picture;
-    int customer_id, role_id,insurance_id;
-    double amount, credit_limit;
-    Date date_of_birth, created_at;
+    private int customerID;
+    private String username;
+    private String password;
+    private String fullName;
+    private String email;
+    private String phone;
+    private String address;
+    private String accountStatus;
+    private String registrationDate;
+    private String dateOfBirth;
+    private String gender;
+    private String profilePicture;
 
     public Customer() {
     }
 
-    public Customer(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
-    public Customer(String full_name, String email, String username, String password, String phone_number, String address, String card_type, String gender, String profile_picture, Date date_of_birth) {
-        this.full_name = full_name;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.phone_number = phone_number;
-        this.address = address;
-        this.card_type = card_type;
-        this.gender = gender;
-        this.profile_picture = profile_picture;
-        this.date_of_birth = date_of_birth;
-    }
-
-    public Customer(String full_name, String email, String username, String password, String phone_number, String address, String card_type, String status, String gender, String profile_picture, int customer_id, int role_id, double amount, double credit_limit, Date date_of_birth, Date created_at) {
-        this.full_name = full_name;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.phone_number = phone_number;
-        this.address = address;
-        this.card_type = card_type;
-        this.status = status;
-        this.gender = gender;
-        this.profile_picture = profile_picture;
-        this.customer_id = customer_id;
-        this.role_id = role_id;
-        this.amount = amount;
-        this.credit_limit = credit_limit;
-        this.date_of_birth = date_of_birth;
-        this.created_at = created_at;
+    public Customer(int customerID) {
+        this.customerID = customerID;
     }
     
-    public Customer(String full_name, String email, String username, String password, String phone_number, String address, String card_type, String status, String gender, String profile_picture, int customer_id, double amount, double credit_limit, Date date_of_birth, Date created_at) {
-        this.full_name = full_name;
-        this.email = email;
+
+    public Customer(int customerID, String username, String password, String fullName, String email, String phone, String address, String accountStatus, String registrationDate, String dateOfBirth, String gender, String profilePicture) {
+        this.customerID = customerID;
         this.username = username;
         this.password = password;
-        this.phone_number = phone_number;
-        this.address = address;
-        this.card_type = card_type;
-        this.status = status;
-        this.gender = gender;
-        this.profile_picture = profile_picture;
-        this.customer_id = customer_id;
-        this.amount = amount;
-        this.credit_limit = credit_limit;
-        this.date_of_birth = date_of_birth;
-        this.created_at = created_at;
-    }
-
-    public Customer(String full_name, String email, String username, String phone_number, String address, String gender, int customer_id, int insurance_id) {
-        this.full_name = full_name;
+        this.fullName = fullName;
         this.email = email;
-        this.username = username;
-        this.phone_number = phone_number;
+        this.phone = phone;
         this.address = address;
+        this.accountStatus = accountStatus;
+        this.registrationDate = registrationDate;
+        this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.customer_id = customer_id;
-        this.insurance_id = insurance_id;
+        this.profilePicture = profilePicture;
     }
 
-    public Customer(String full_name, String email, String username, String phone_number, String address, String gender, int customer_id) {
-        this.full_name = full_name;
-        this.email = email;
-        this.username = username;
-        this.phone_number = phone_number;
-        this.address = address;
-        this.gender = gender;
-        this.customer_id = customer_id;
-    }
-    
-    
-
-    public int getInsurance_id() {
-        return insurance_id;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setInsurance_id(int insurance_id) {
-        this.insurance_id = insurance_id;
-    }
-
-    public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public int getRole_id() {
-        return role_id;
-    }
-
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
-    }
-
-    public int getCustomer_id() {
-        return customer_id;
-    }
-
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
-    }
-
-    public String getFull_name() {
-        return full_name;
-    }
-
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
     public String getUsername() {
@@ -163,12 +70,28 @@ public class Customer {
         this.password = password;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getAddress() {
@@ -179,20 +102,28 @@ public class Customer {
         this.address = address;
     }
 
-    public String getCard_type() {
-        return card_type;
+    public String getAccountStatus() {
+        return accountStatus;
     }
 
-    public void setCard_type(String card_type) {
-        this.card_type = card_type;
+    public void setAccountStatus(String accountStatus) {
+        this.accountStatus = accountStatus;
     }
 
-    public String getStatus() {
-        return status;
+    public String getRegistrationDate() {
+        return registrationDate;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setRegistrationDate(String registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getGender() {
@@ -203,41 +134,18 @@ public class Customer {
         this.gender = gender;
     }
 
-    public String getProfile_picture() {
-        return profile_picture;
+    public String getProfilePicture() {
+        return profilePicture;
     }
 
-    public void setProfile_picture(String profile_picture) {
-        this.profile_picture = profile_picture;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public double getCredit_limit() {
-        return credit_limit;
-    }
-
-    public void setCredit_limit(double credit_limit) {
-        this.credit_limit = credit_limit;
-    }
-
-    public Date getDate_of_birth() {
-        return date_of_birth;
-    }
-
-    public void setDate_of_birth(Date date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
     @Override
     public String toString() {
-        return "Customer{" + "full_name=" + full_name + ", email=" + email + ", username=" + username + ", password=" + password + ", phone_number=" + phone_number + ", address=" + address + ", card_type=" + card_type + ", status=" + status + ", gender=" + gender + ", profile_picture=" + profile_picture + ", customer_id=" + customer_id + ", role_id=" + role_id + ", amount=" + amount + ", credit_limit=" + credit_limit + ", date_of_birth=" + date_of_birth + ", created_at=" + created_at + '}';
+        return "Customer{" + "customerID=" + customerID + ", username=" + username + ", password=" + password + ", fullName=" + fullName + ", email=" + email + ", phone=" + phone + ", address=" + address + ", accountStatus=" + accountStatus + ", registrationDate=" + registrationDate + ", dateOfBirth=" + dateOfBirth + ", gender=" + gender + ", profilePicture=" + profilePicture + '}';
     }
 
+    
 }

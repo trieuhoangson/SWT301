@@ -1,281 +1,316 @@
-<%-- 
-    Document   : service
-    Created on : Feb 11, 2025, 12:36:07 AM
-    Author     : DELL
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
-<html>
+<html lang="zxx">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Banking Services</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <meta name="description" content="Health & Care Medical template">
+        <meta name="author" content="themefisher.com">
+        <title>Novena - Health & Care</title>
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
+        <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
+        <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- Custom CSS -->
         <style>
-            :root {
-                --primary-color: #dc3545;
-                --secondary-color: #6c757d;
-            }
-
-            body {
-                background-color: #f8f9fa;
-            }
-
-            .service-header {
-                background: linear-gradient(135deg, #dc3545, #c82333);
-                color: white;
-                padding: 3rem 0;
-                margin-bottom: 2rem;
-                text-align: center;
-            }
-
-            .service-card {
-                background: white;
-                border: none;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                transition: transform 0.3s, box-shadow 0.3s;
-                margin-bottom: 2rem;
-                border-radius: 12px;
-                overflow: hidden;
-                height: 100%;
-            }
-
-            .service-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 4px 20px rgba(220,53,69,0.2);
-            }
-
-            .service-icon {
-                font-size: 3rem;
-                margin: 1.5rem 0;
-                color: var(--primary-color);
-            }
-
-            .service-title {
-                color: #202124;
-                font-size: 1.5rem;
-                font-weight: 600;
-                margin-bottom: 1rem;
-            }
-
-            .service-type-badge {
-                display: inline-block;
-                padding: 0.4rem 1rem;
-                border-radius: 20px;
-                font-size: 0.875rem;
-                font-weight: 500;
-                margin-bottom: 1rem;
-            }
-
-            .service-type-badge.saving {
-                background-color: #fce8e6;
-                color: #c82333;
-            }
-
-            .service-type-badge.loan {
-                background-color: #fce8e6;
-                color: #c82333;
-            }
-
-            .service-type-badge.deposit {
-                background-color: #fce8e6;
-                color: #c82333;
-            }
-
-            .service-type-badge.withdrawal {
-                background-color: #fce8e6;
-                color: #c82333;
-            }
-
-            .service-description {
-                color: var(--secondary-color);
-                margin-bottom: 1.5rem;
-                line-height: 1.6;
-            }
-
-            .btn-learn-more {
-                background-color: var(--primary-color);
-                color: white;
-                border: none;
-                padding: 0.5rem 1.5rem;
-                border-radius: 25px;
-                font-weight: 500;
-                transition: background-color 0.3s;
-            }
-
-            .btn-learn-more:hover {
-                background-color: #c82333;
-                color: white;
-            }
-
-            .service-inactive {
-                opacity: 0.7;
-            }
-
-            .service-card .card-body {
-                padding: 1.5rem;
-                display: flex;
-                flex-direction: column;
-                height: 100%;
-            }
-
-            .service-footer {
-                margin-top: auto;
-                padding-top: 1rem;
-            }
-            nav {
-                text-align: center;
-                margin: 20px 0;
-            }
-
-            nav ul {
-                list-style-type: none;
-                padding: 0;
-                display: inline-block;
-                background: #e74c3c; /* Màu đỏ chủ đạo */
-                padding: 12px 25px;
-                border-radius: 10px;
-                box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
-            }
-
-            nav ul li {
-                display: inline;
-                margin: 0 15px;
-            }
-
-            nav ul li a {
-                text-decoration: none;
-                color: white;
-                font-size: 18px;
-                font-weight: bold;
-                padding: 10px 15px;
-                transition: 0.3s ease-in-out;
-                border-radius: 5px;
-                position: relative;
-            }
-
-            nav ul li a::after {
-                content: "";
-                display: block;
-                width: 0;
-                height: 3px;
-                background: white;
-                position: absolute;
-                left: 50%;
-                bottom: -5px;
-                transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
-            }
-
-            nav ul li a:hover::after {
+            .image-container {
                 width: 100%;
-                left: 0;
+                height: 250px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #f8f9fa;
+                border-radius: 10px;
             }
-
-            nav ul li a:hover {
-                background: #c0392b; /* Màu đỏ đậm hơn */
-                box-shadow: 0 3px 6px rgba(192, 57, 43, 0.5);
+            .image-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
-
-
-
+            .badge {
+                padding: 8px 16px;
+                font-size: 14px;
+                border-radius: 12px;
+            }
+            .pagination {
+                justify-content: center;
+            }
         </style>
     </head>
-    <body>
 
-        <!-- Header Section -->
-        <div class="service-header">
-            <div class="container">
-                <h1 class="display-4"><i class="bi bi-bank"></i> Banking Services</h1>
-                <p class="lead">Discover our range of financial services</p>
-            </div>
-        </div>
+    <body id="top">
+        <%--<jsp:include page="headerCustomer.jsp"></jsp:include>--%>
+        <jsp:include page="headerHome.jsp"></jsp:include>
 
-        <!-- Navigation Bar -->
-        <nav style="text-align: center; margin: 20px 0;">
-            <ul style="list-style-type: none; padding: 0; display: inline-block;">
-                <li style="display: inline; margin: 0 15px;"><a href="home">Home</a></li>
-                <li style="display: inline; margin: 0 15px;"><a href="about.jsp">About</a></li>
-                <li style="display: inline; margin: 0 15px;"><a href="services.jsp">Services</a></li>
-                <li style="display: inline; margin: 0 15px;"><a href="team.jsp">Team</a></li>
-                <li style="display: inline; margin: 0 15px;"><a href="contact.jsp">Contact Us</a></li>
-                <li style="display: inline; margin: 0 15px;"><a href="news.jsp">News</a></li>
-            </ul>
-        </nav>
-
-        <!-- Main Content -->
-        <div class="container">
-            <!-- Services Grid -->
-            <div class="row g-4">
-                <c:forEach items="${listServices}" var="s">
-                    <div class="col-md-4">
-                        <div class="service-card ${s.status != 'active' ? 'service-inactive' : ''}">
-                            <div class="card-body text-center">
-                                <div class="service-icon">
-                                    <c:choose>
-                                        <c:when test="${s.service_type == 'Saving'}">
-                                            <i class="bi bi-piggy-bank"></i>
-                                        </c:when>
-                                        <c:when test="${s.service_type == 'Loan'}">
-                                            <i class="bi bi-cash-coin"></i>
-                                        </c:when>
-                                        <c:when test="${s.service_type == 'Deposit'}">
-                                            <i class="bi bi-safe"></i>
-                                        </c:when>
-                                        <c:when test="${s.service_type == 'Withdrawal'}">
-                                            <i class="bi bi-cash-stack"></i>
-                                        </c:when>
-                                    </c:choose>
-                                </div>
-                                <h3 class="service-title">${s.service_name}</h3>
-                                <div class="service-type-badge ${s.service_type.toLowerCase()}">
-                                    <c:choose>
-                                        <c:when test="${s.service_type == 'Saving'}">
-                                            Savings
-                                        </c:when>
-                                        <c:when test="${s.service_type == 'Loan'}">
-                                            Loans
-                                        </c:when>
-                                        <c:when test="${s.service_type == 'Deposit'}">
-                                            Deposits
-                                        </c:when>
-                                        <c:when test="${s.service_type == 'Withdrawal'}">
-                                            Withdrawals
-                                        </c:when>
-                                    </c:choose>
-                                </div>
-                                <p class="service-description">
-                                    ${s.description}
-                                </p>
-                                <div class="service-footer">
-                                    <c:if test="${s.status == 'active'}">
-                                        <a href="Service?action=details&id=${s.service_id}" 
-                                           class="btn btn-learn-more">
-                                            <i class="bi bi-arrow-right-circle"></i> Learn More
-                                        </a>
-                                    </c:if>
-                                    <c:if test="${s.status != 'active'}">
-                                        <button class="btn btn-secondary" disabled>
-                                            <i class="bi bi-clock"></i> Currently Unavailable
-                                        </button>
-                                    </c:if>
-                                </div>
+            <section class="page-title bg-1">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="block text-center">
+                                <span class="text-white">Our Service</span>
+                                <h1 class="text-capitalize mb-5 text-lg">What we do</h1>
                             </div>
                         </div>
                     </div>
-                </c:forEach>
-            </div>
-
-            <!-- No Services Message -->
-            <c:if test="${empty listServices}">
-                <div class="alert alert-info text-center">
-                    <i class="bi bi-info-circle"></i> No services available at the moment.
                 </div>
-            </c:if>
-        </div>
+            </section>
 
-        <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- Phần lọc và tìm kiếm -->
+            <section class="container mt-4">
+                <form action="loadservice" method="get" class="row align-items-center" onsubmit="return validateForm(event);">
+                    <!-- Nhóm lọc -->
+                    <div class="col-md-6">
+                        <div class="row g-2 align-items-center">
+                            <div class="col-auto">
+                                <label for="sortBy" class="fw-bold">Lọc dịch vụ:</label>
+                            </div>
+                            <div class="col-auto">
+                                <select name="sortBy" id="sortBy" class="form-select">
+                                    <option value="reload">Chọn tiêu chí</option>
+                                    <option value="price_asc" ${param.sortBy == 'price_asc' ? 'selected' : ''}>Giá tăng dần</option>
+                                <option value="price_desc" ${param.sortBy == 'price_desc' ? 'selected' : ''}>Giá giảm dần</option>
+                                <option value="vip" ${param.sortBy == 'vip' ? 'selected' : ''}>Loại VIP</option>
+                                <option value="basic" ${param.sortBy == 'basic' ? 'selected' : ''}>Loại cơ bản</option>
+                                <option value="duration_asc" ${param.sortBy == 'duration_asc' ? 'selected' : ''}>Thời gian tăng dần</option>
+                                <option value="duration_desc" ${param.sortBy == 'duration_desc' ? 'selected' : ''}>Thời gian giảm dần</option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" name="action" value="filter" class="btn btn-primary">Lọc</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nhóm tìm kiếm -->
+                <div class="col-md-6">
+                    <div class="row g-2 align-items-center justify-content-end">
+                        <div class="col-auto">
+                            <input type="text" name="searchKeyword" id="searchKeyword" class="form-control" placeholder="Tìm kiếm theo tên dịch vụ" value="${param.searchKeyword}">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" name="action" value="search" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- Danh sách dịch vụ -->
+        <section class="section service-2">
+            <div class="container">
+                <div class="row">
+                    <c:forEach var="service" items="${serviceList}">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="service-block mb-5">
+                                <div class="image-container">
+                                    <img src="${empty service.packageID ? 'images/default-image.jpg' : 'getimage?packageID='}${service.packageID}" 
+                                         alt="Service Image">
+                                </div>
+                                <div class="content">
+                                    <h4 class="mt-4 mb-2 title-color">
+                                        <a href="loadservicedetail?packageID=${service.packageID}" class="text-decoration-none text-primary">
+                                            ${service.packageName}
+                                        </a>
+                                    </h4>
+                                    <p class="mb-4">Giá: $${service.price}</p>
+                                    <p class="mb-4">Thời gian: ${service.duration} phút</p>
+                                    <p class="mb-4">Loại dịch vụ: 
+                                        <span class="badge ${service.type == 'VIP' ? 'bg-danger text-white' : 'bg-success text-white'}">
+                                            ${service.type}
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+
+                <!-- Pagination -->
+                <div class="row">
+                    <div class="col-12">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center">
+                                <!-- Nút Previous -->
+                                <c:if test="${pageNumber > 1}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="loadservice?pageNumber=${pageNumber - 1}&searchKeyword=${param.searchKeyword}&sortBy=${param.sortBy}&action=${param.action}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+
+                                <!-- Xác định startPage và endPage -->
+                                <c:set var="startPage" value="${pageNumber - 2}" />
+                                <c:if test="${startPage < 1}">
+                                    <c:set var="startPage" value="1" />
+                                </c:if>
+                                <c:set var="endPage" value="${pageNumber + 2}" />
+                                <c:if test="${endPage > totalPages}">
+                                    <c:set var="endPage" value="${totalPages}" />
+                                </c:if>
+
+                                <!-- Nếu startPage lớn hơn 1, hiển thị nút trang 1 và dấu "..." -->
+                                <c:if test="${startPage > 1}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="loadservice?pageNumber=1&searchKeyword=${param.searchKeyword}&sortBy=${param.sortBy}&action=${param.action}">1</a>
+                                    </li>
+                                    <c:if test="${startPage > 2}">
+                                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                                        </c:if>
+                                    </c:if>
+
+                                <!-- Hiển thị các trang từ startPage đến endPage -->
+                                <c:forEach var="i" begin="${startPage}" end="${endPage}">
+                                    <li class="page-item ${i == pageNumber ? 'active' : ''}">
+                                        <a class="page-link" href="loadservice?pageNumber=${i}&searchKeyword=${param.searchKeyword}&sortBy=${param.sortBy}&action=${param.action}">${i}</a>
+                                    </li>
+                                </c:forEach>
+
+                                <!-- Nếu endPage nhỏ hơn totalPages, hiển thị dấu "..." và nút trang cuối -->
+                                <c:if test="${endPage < totalPages}">
+                                    <c:if test="${endPage < totalPages - 1}">
+                                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                                        </c:if>
+                                    <li class="page-item">
+                                        <a class="page-link" href="loadservice?pageNumber=${totalPages}&searchKeyword=${param.searchKeyword}&sortBy=${param.sortBy}&action=${param.action}">${totalPages}</a>
+                                    </li>
+                                </c:if>
+
+                                <!-- Nút Next -->
+                                <c:if test="${pageNumber < totalPages}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="loadservice?pageNumber=${pageNumber + 1}&searchKeyword=${param.searchKeyword}&sortBy=${param.sortBy}&action=${param.action}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <footer class="footer section gray-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mr-auto col-sm-6">
+                        <div class="widget mb-5 mb-lg-0">
+                            <div class="logo mb-4">
+                                <img src="images/logo.png" alt="" class="img-fluid">
+                            </div>
+                            <p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
+
+                            <ul class="list-inline footer-socials mt-4">
+                                <li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i class="icofont-facebook"></i></a></li>
+                                <li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="icofont-twitter"></i></a></li>
+                                <li class="list-inline-item"><a href="https://www.pinterest.com/themefisher/"><i class="icofont-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="widget mb-5 mb-lg-0">
+                            <h4 class="text-capitalize mb-3">Department</h4>
+                            <div class="divider mb-4"></div>
+
+                            <ul class="list-unstyled footer-menu lh-35">
+                                <li><a href="#">Surgery </a></li>
+                                <li><a href="#">Wome's Health</a></li>
+                                <li><a href="#">Radiology</a></li>
+                                <li><a href="#">Cardioc</a></li>
+                                <li><a href="#">Medicine</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="widget mb-5 mb-lg-0">
+                            <h4 class="text-capitalize mb-3">Support</h4>
+                            <div class="divider mb-4"></div>
+
+                            <ul class="list-unstyled footer-menu lh-35">
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Company Support </a></li>
+                                <li><a href="#">FAQuestions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="widget widget-contact mb-5 mb-lg-0">
+                            <h4 class="text-capitalize mb-3">Get in Touch</h4>
+                            <div class="divider mb-4"></div>
+
+                            <div class="footer-contact-block mb-4">
+                                <div class="icon d-flex align-items-center">
+                                    <i class="icofont-email mr-3"></i>
+                                    <span class="h6 mb-0">Support Available for 24/7</span>
+                                </div>
+                                <h4 class="mt-2"><a href="tel:+23-345-67890">Support@email.com</a></h4>
+                            </div>
+
+                            <div class="footer-contact-block">
+                                <div class="icon d-flex align-items-center">
+                                    <i class="icofont-support mr-3"></i>
+                                    <span class="h6 mb-0">Mon to Fri : 08:30 - 18:00</span>
+                                </div>
+                                <h4 class="mt-2"><a href="tel:+23-345-67890">+23-456-6588</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-btm py-4 mt-5">
+                    <div class="row align-items-center justify-content-between">
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <a class="backtop js-scroll-trigger" href="#top">
+                                <i class="icofont-long-arrow-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="plugins/jquery/jquery.js"></script>
+        <script src="plugins/bootstrap/js/popper.js"></script>
+        <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+        <script src="js/script.js"></script>
+
+        <!-- JavaScript validate form -->
+        <script>
+                    function validateForm(event) {
+                        if (event.submitter && event.submitter.value === 'search') {
+                            var searchInputField = document.getElementById("searchKeyword");
+                            var searchInput = searchInputField.value.trim();
+                            searchInputField.value = searchInput;
+                            if (searchInput === "") {
+                                alert("Vui lòng nhập từ khóa tìm kiếm.");
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+        </script>
+
     </body>
 </html>

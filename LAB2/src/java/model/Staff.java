@@ -3,68 +3,57 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-import java.sql.*;
-import java.util.Date;
 
 /**
  *
- * @author default
+ * @author jaxbo
  */
 public class Staff {
-    public int staff_id;
-    public String full_name,email,username,password,
-            phone_number,gender;
-    public Date date_of_birth;
-    public String address;
-    public int role_id;
-    public String status;
+    private int staffID;
+    private String fullName;
+    private String email;
+    private String password;
+    private String phone;
+    private String gender;
+    private String dateOfBirth;
+    private String address;
+    private String hireDate;
+    private int roleID;
+    private String status;
+    private String profilePicture;
 
     public Staff() {
     }
 
-    public Staff(String full_name, String email, String username, String password, String phone_number, String gender, Date date_of_birth, String address, int role_id, String status) {
-        this.full_name = full_name;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.phone_number = phone_number;
-        this.gender = gender;
-        this.date_of_birth = date_of_birth;
-        this.address = address;
-        this.role_id = role_id;
-        this.status = status;
-    }
-    
-    
-
-    public Staff(int staff_id, String full_name, String email, String password, String username, String phone_number, String gender, Date date_of_birth, String address, int role_id, String status) {
-        this.staff_id = staff_id;
-        this.full_name = full_name;
+    public Staff(int staffID, String fullName, String email, String password, String phone, String gender, String dateOfBirth, String address, String hireDate, int roleID, String status, String profilePicture) {
+        this.staffID = staffID;
+        this.fullName = fullName;
         this.email = email;
         this.password = password;
-        this.username = username;
-        this.phone_number = phone_number;
+        this.phone = phone;
         this.gender = gender;
-        this.date_of_birth = date_of_birth;
+        this.dateOfBirth = dateOfBirth;
         this.address = address;
-        this.role_id = role_id;
+        this.hireDate = hireDate;
+        this.roleID = roleID;
         this.status = status;
+        this.profilePicture = profilePicture;
     }
 
-    public int getStaff_id() {
-        return staff_id;
+    public int getStaffID() {
+        return staffID;
     }
 
-    public void setStaff_id(int staff_id) {
-        this.staff_id = staff_id;
+    public void setStaffID(int staffID) {
+        this.staffID = staffID;
     }
 
-    public String getFull_name() {
-        return full_name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -83,20 +72,12 @@ public class Staff {
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPhone_number() {
-        return phone_number;
-    }
-
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getGender() {
@@ -107,12 +88,12 @@ public class Staff {
         this.gender = gender;
     }
 
-    public Date getDate_of_birth() {
-        return date_of_birth;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDate_of_birth(Date date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getAddress() {
@@ -123,12 +104,20 @@ public class Staff {
         this.address = address;
     }
 
-    public int getRole_id() {
-        return role_id;
+    public String getHireDate() {
+        return hireDate;
     }
 
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
+    public void setHireDate(String hireDate) {
+        this.hireDate = hireDate;
+    }
+
+    public int getRoleID() {
+        return roleID;
+    }
+
+    public void setRoleID(int roleID) {
+        this.roleID = roleID;
     }
 
     public String getStatus() {
@@ -139,10 +128,13 @@ public class Staff {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Staff{" + "staff_id=" + staff_id + ", full_name=" + full_name + ", email=" + email + ", password=" + password + ", username=" + username + ", phone_number=" + phone_number + ", gender=" + gender + ", date_of_birth=" + date_of_birth + ", address=" + address + ", role_id=" + role_id + ", status=" + status + '}';
+    public String getProfilePicture() {
+        return profilePicture;
     }
-    
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
     
 }

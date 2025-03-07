@@ -4,40 +4,60 @@
  */
 package model;
 
+import java.util.List;
+
 /**
  *
- * @author default
+ * @author Gigabyte
  */
 public class Role {
-    String role_id,role_name;
+    private int roleID;
+    private String roleName;
+    private String description;
+    private List<Permission> permission;
 
     public Role() {
     }
 
-    public Role(String role_id, String role_name) {
-        this.role_id = role_id;
-        this.role_name = role_name;
+    public Role(int roleID, String roleName, String description, List<Permission> permission) {
+        this.roleID = roleID;
+        this.roleName = roleName;
+        this.description = description;
+        this.permission = permission;
     }
 
-    public String getRole_id() {
-        return role_id;
+    public int getRoleID() {
+        return roleID;
     }
 
-    public void setRole_id(String role_id) {
-        this.role_id = role_id;
+    public void setRoleID(int roleID) {
+        this.roleID = roleID;
     }
 
-    public String getRole_name() {
-        return role_name;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setRole_name(String role_name) {
-        this.role_name = role_name;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
-    @Override
-    public String toString() {
-        return "Role{" + "role_id=" + role_id + ", role_name=" + role_name + '}';
+    public String getDescription() {
+        return description;
     }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Permission> getPermission() {
+        return permission;
+    }
+
+    public void setPermission(List<Permission> permission) {
+        this.permission = permission;
+    }
+
+    
     
 }

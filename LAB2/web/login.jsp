@@ -1,111 +1,145 @@
-<%-- 
-    Document   : Login
-    Created on : Jan 10, 2025, 10:24:01 PM
-    Author     : Windows
---%>
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <script>
+            function togglePasswordVisibility(passwordFieldId, toggleButtonId) {
+                const passwordField = document.getElementById(passwordFieldId);
+                const icon = document.getElementById(toggleButtonId).querySelector('i');
 
-        <title>SB Admin 2 - Login</title>
-
-        <!-- Custom fonts for this template-->
-        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet">
-
-        <!-- Custom styles for this template-->
-        <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+                if (passwordField.type === 'password') {
+                    passwordField.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passwordField.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            }
+        </script>
     </head>
 
-    <body class="bg-gradient-primary">
+    <body class="bg-light">
+        <%
+            Cookie[] cookies = request.getCookies();
+            String savedUsername = "";
+            String savedPassword = "";
 
-        <div class="container">
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if ("username".equals(cookie.getName())) {
+                        savedUsername = cookie.getValue();
+                    }
+                    if ("password".equals(cookie.getName())) {
+                        savedPassword = cookie.getValue();
+                    }
+                }
+            }
+        %>
+        <div class="container d-flex justify-content-center align-items-center vh-100">
+            <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <a href="dashboard.html">
+                            <img src="assets/img/logo-dark.png" alt="Logo" class="mb-3" style="max-width: 120px;">
+                        </a>
+                        <h5 class="card-title">Welcome Back</h5>
+                    </div>
 
-            <!-- Outer Row -->
-            <div class="row justify-content-center">
+                    <div id="userForm" style="display: block;">
+                        <!-- User Login -->
+                        <form action="login" method="post" class="form-signin">
+                            <p class="text-danger text-center">${error}</p>
+                            <div class="form-group">
+                                <label for="userType">Select User Type</label>
+                                <select class="form-control" id="userType" name="userType" onchange="toggleForm()">
+                                    <option value="customer" <%= "customer".equals(request.getAttribute("userType")) ? "selected" : "" %>>Customer</option>
+                                    <option value="staff" <%= "staff".equals(request.getAttribute("userType")) ? "selected" : "" %>>Staff</option>
+                                </select>
 
-                <div class="col-xl-10 col-lg-12 col-md-9">
+                            </div>
 
-                    <div class="card o-hidden border-0 shadow-lg my-5">
-                        <div class="card-body p-0">
-                            <!-- Nested Row within Card Body -->
-                            <div class="row">
-                                <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                                <div class="col-lg-6">
-                                    <div class="p-5">
-                                        <div class="text-center">
-                                            <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                                        </div>
-                                        <div id="logreg-forms">
-                                            <form class="form-signin" action="login" method="post">
-                                                <p class="text-danger">${mess}</p>
-                                                <div class="form-group">
-                                                    <input name="username"  type="text"  id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input name="pass"  type="password"  id="inputPassword" class="form-control" placeholder="Password" required="">
-                                                </div>
-                                                <select name="role">
-                                                    <option value="customer">Customer</option>
-                                                    <option value="staff">Staff</option>
-                                                    <option value="insurance">Insurance</option>
-                                                </select>
-                                                <div class="form-group">
-                                                    <div class="custom-control custom-checkbox small">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                        <label class="custom-control-label" for="customCheck">Remember
-                                                            Me</label>
-                                                    </div>
-                                                </div>
-                                                <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i>Login</button>
-                                                <hr>
-                                            </form>
-                                            <hr>
-                                            <div class="text-center">
-                                                <a class="small" href="forgotpass">Forgot Password?</a>
-                                            </div>
-                                            <div class="text-center">
-                                                <a class="small" href="register">Create an Account!</a>
-                                            </div>
-                                        </div>
+                            <div class="form-group">
+                                <label id="userLabel" for="user">Username</label>
+                                <input type="text" name="user" id="user" value="<%= savedUsername %>" class="form-control" placeholder="Enter your username" autofocus>                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <div class="input-group">
+                                    <input type="password" name="password" id="password" value="<%= savedPassword %>" class="form-control" placeholder="Enter your password">
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-outline-secondary" id="togglePasswordUser" tabindex="-1" onclick="togglePasswordVisibility('password', 'togglePasswordUser')">
+                                            <i class="fa fa-eye"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
+                            <div class="form-group checkbox" id="rememberMeChkBox">
+                                <label><input type="checkbox" name="rememberMe" <% if (!savedUsername.isEmpty()) { %> checked <% } %>> Remember me</label>
+                            </div>
+
+                            <div class="form-group text-right">
+                                <a href="forgot-password.jsp" class="small">Forgot your password?</a>
+                            </div>
+
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            </div>
+
+                            <div class="text-center mt-3" id="registerLink">
+                                <p class="small">Don't have an account? <a href="register.jsp">Register Now</a></p>
+                            </div>
+                        </form>
                     </div>
+                    <div class="mt-4 text-center">
+                        <button type="button" class="btn btn-danger btn-block mb-2" id="googleLoginBtn">
+                            <i class="fa fa-google me-2"></i>Login with Google
+                        </button>
+                    </div>
+
                 </div>
             </div>
-
         </div>
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/jquery-3.2.1.min.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/app.js"></script>
+        <script>
+                                            function toggleForm() {
+                                                var userType = document.getElementById("userType").value;
+                                                var userLabel = document.getElementById("userLabel");
+                                                var userInput = document.getElementById("user");
+                                                var googleLogin = document.getElementById("googleLoginBtn");
 
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+                                                if (userType === "customer") {
+                                                    userLabel.innerText = "Username";
+                                                    userInput.placeholder = "Enter your username";
+                                                    userInput.type = "text";
+                                                    googleLogin.style.display = "block";
+                                                    registerLink.style.display = "block";
+                                                    rememberMeChkBox.style.display = "block";
 
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
-
+                                                } else {
+                                                    userLabel.innerText = "Email";
+                                                    userInput.placeholder = "Enter your email";
+                                                    userInput.type = "email";
+                                                    googleLogin.style.display = "none";
+                                                    registerLink.style.display = "none";
+                                                    rememberMeChkBox.style.display = "none";
+                                                }
+                                            }
+                                            window.onload = function () {
+                                                toggleForm();
+                                            };
+        </script>
     </body>
-
 </html>
