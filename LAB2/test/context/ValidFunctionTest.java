@@ -35,16 +35,15 @@ public class ValidFunctionTest {
         assertEquals("Doi La Be Kho", valid.normalizeName("doi La BE KHo"));
         assertEquals("Le Hoang", valid.normalizeName("  le   hoang  "));
         assertEquals("", valid.normalizeName(" "));
-        assertEquals("", valid.normalizeName(null)); // Trường hợp null
-        assertEquals("A", valid.normalizeName("a")); // Một ký tự thường
-        assertEquals("B", valid.normalizeName("B")); // Một ký tự hoa
-        assertEquals("Tran Thi B", valid.normalizeName("  tran   THI  b ")); // Khoảng trắng thừa giữa các từ
-        assertEquals("O'connor John", valid.normalizeName("o'connor JOHN")); // Tên có dấu '
-//        assertEquals("Nguyen-Van A", valid.normalizeName("nguyen-VAN a")); // Tên có dấu '-'
-        assertEquals("Marie Curie", valid.normalizeName("  marie  Curie   ")); // Chuỗi có khoảng trắng đầu cuối
-        assertEquals("Le Van!", valid.normalizeName("le VAN!")); // Tên có dấu chấm câu
-        assertEquals("Lê Văn Tùng", valid.normalizeName("lê vĂn TÙNG")); // Tên có dấu tiếng Việt
-        assertEquals("123", valid.normalizeName("123")); // Chữ số trong tên
+        assertEquals("", valid.normalizeName(null));
+        assertEquals("A", valid.normalizeName("a"));
+        assertEquals("B", valid.normalizeName("B"));
+        assertEquals("Tran Thi B", valid.normalizeName("  tran   THI  b ")); 
+        assertEquals("O'connor John", valid.normalizeName("o'connor JOHN")); 
+        assertEquals("Doi La Be Kho", valid.normalizeName("      doi   La   Be khO    ")); 
+        assertEquals("Le Van!", valid.normalizeName("le VAN!")); 
+        assertEquals("Lê Văn Tùng", valid.normalizeName("lê vĂn TÙNG")); 
+        assertEquals("123", valid.normalizeName("123")); 
     }
     
     
