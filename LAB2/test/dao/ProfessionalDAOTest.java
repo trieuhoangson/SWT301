@@ -62,6 +62,7 @@ public class ProfessionalDAOTest {
     assertEquals("John Doe", result.getName()); 
     assertEquals("john@example.com", result.getEmail());
     assertEquals("Cardiology", result.getSpecialization());
+        System.out.println("Found succesfully" );
     }
 
     @Test
@@ -74,6 +75,7 @@ public class ProfessionalDAOTest {
 
         
         assertNull(result);
+        System.out.println("Not found");
     }
     
     @Test
@@ -88,6 +90,7 @@ public void testGetProfessionalByID_ThrowsException() {
     } catch (RuntimeException e) {
        
         assertEquals("Database error", e.getMessage());
+        System.out.println(e.getMessage());
     }
 }
 
@@ -114,6 +117,7 @@ public void testGetProfessionalByID_ForceFail() {
 
     
     assertEquals("Jane Doe", result.getName()); 
+
 }
 
 
@@ -140,6 +144,7 @@ public void testGetProfessionalByID_ForceFail() {
 
         
         assertTrue(result);
+        System.out.println("update succesfully");
     }
 
     @Test
@@ -165,6 +170,7 @@ public void testGetProfessionalByID_ForceFail() {
 
         
         assertFalse(result);
+        System.out.println("Update fail");
     }
 
     @Test

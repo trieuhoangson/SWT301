@@ -256,7 +256,7 @@ public class ProfessionalDAO {
             + "    p.biography,\n"
             + "    p.profilePicture AS professionalProfilePicture,\n"
             + "    p.status AS professionalStatus,\n"
-            + "    p.createdAt\n"
+//            + "    p.createdAt\n"
             + "FROM Staff s\n"
             + "JOIN Professional p ON s.staffID = p.staffID\n"
             + "WHERE p.status = 'Active';"; // Chỉ lấy bác sĩ có trạng thái Active
