@@ -86,8 +86,8 @@ public class ValidFunction {
         SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
         return dateFormat.format(timestamp);
     }
-    
-    //chuyển ngày sinh thành dd/mm/yyy
+
+    //chuyển ngày sinh thành dd/mm/yyyy
     public String convertDateString(String inputDate, String outputPattern) {
         if (inputDate == null || inputDate.isEmpty()) {
             return "";
@@ -98,7 +98,6 @@ public class ValidFunction {
             SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
             return outputFormat.format(date);
         } catch (ParseException e) {
-            e.printStackTrace();
             return "";
         }
     }
@@ -113,13 +112,6 @@ public class ValidFunction {
 
     public static void main(String[] args) {
         ValidFunction valid = new ValidFunction();
-        CustomerDAO dao = new CustomerDAO();
-        List<Customer> list = dao.getAllCustomer();
-        for (Customer cs : list) {
-            System.out.println("Staff password: " + cs.getPassword());
-            System.out.println("Hash password: " + valid.hashPassword(cs.getPassword()));
-            System.out.println("");
-        }
-
+        System.out.println(valid.convertDateString("10-03-2025", "dd/MM/yyyy"));
     }
 }
