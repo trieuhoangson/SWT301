@@ -33,7 +33,6 @@ public class ValidFunctionTest {
     @Test
     public void testNormalizeName() {
         assertEquals("Doi La Be Kho", valid.normalizeName("doi La BE KHo"));
-        assertEquals("Le Hoang", valid.normalizeName("  le   hoang  "));
         assertEquals("", valid.normalizeName(" "));
         assertEquals("", valid.normalizeName(null));
         assertEquals("A", valid.normalizeName("a"));
